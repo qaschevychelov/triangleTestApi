@@ -159,7 +159,7 @@ public class HttpClient {
      * @param code status code
      */
     public void assertStatusCode(int code) {
-        assertEquals("Unexpected response status code", response.statusCode(), code);
+        assertEquals("Unexpected response status code", code, response.statusCode());
     }
 
     /**

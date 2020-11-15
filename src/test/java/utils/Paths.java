@@ -1,7 +1,9 @@
 package utils;
 
 public enum Paths {
-    SIMPLE("simple.json");
+    SIMPLE("simple.json"),
+    WITHOUT_INPUT("without_input.json"),
+    INPUT_NULL("input_null.json");
 
     String path;
 
