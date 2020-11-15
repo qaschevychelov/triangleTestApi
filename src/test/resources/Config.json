@@ -1,0 +1,8 @@
+{
+  "test": {
+    "env": {
+      "host": "https://qa-quiz.natera.com",
+      "token": "9e74c340-198f-41b4-8782-09c5959e3d99"
+    }
+  }
+}
