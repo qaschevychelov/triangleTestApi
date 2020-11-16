@@ -2,6 +2,7 @@ package commons;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -25,6 +26,7 @@ public class HttpClient {
      * @param endpoint API endpoint
      * @return String
      */
+    @Step("send POST with body")
     public String sendPost(Map<String, String> params, Paths path, String endpoint) {
         this.response = null;
         this.response = RestAssured.given()
@@ -43,6 +45,7 @@ public class HttpClient {
      * @param endpoint API endpoint
      * @return String
      */
+    @Step("send POST without token")
     public String sendPostWithoutToken(Map<String, String> params, Paths path, String endpoint) {
         this.response = null;
         this.response = RestAssured.given()
@@ -58,6 +61,7 @@ public class HttpClient {
      * @param endpoint API endpoint
      * @return String
      */
+    @Step("send GET")
     public String sendGet(String endpoint) {
         this.response = null;
         this.response = RestAssured.given()
@@ -73,6 +77,7 @@ public class HttpClient {
      * @param endpoint API endpoint
      * @return String
      */
+    @Step("send GET without token")
     public String sendGetWithoutToken(String endpoint) {
         this.response = null;
         this.response = RestAssured.given()
@@ -87,6 +92,7 @@ public class HttpClient {
      * @param endpoint API endpoint
      * @return String
      */
+    @Step("send DELETE")
     public String sendDelete(String endpoint) {
         this.response = null;
         this.response = RestAssured.given()
@@ -102,6 +108,7 @@ public class HttpClient {
      * @param endpoint API endpoint
      * @return String
      */
+    @Step("send DELETE without token")
     public String sendDeleteWithoutToken(String endpoint) {
         this.response = null;
         this.response = RestAssured.given()
@@ -142,6 +149,7 @@ public class HttpClient {
     /**
      * clean previously created triangles
      */
+    @Step("clean previously created triangles")
     public void clean() {
         String res = getAllTriangles();
         JsonArray arr = new JsonParser().parse(res).getAsJsonArray();
@@ -158,6 +166,7 @@ public class HttpClient {
      * assert status code
      * @param code status code
      */
+    @Step("assert status code")
     public void assertStatusCode(int code) {
         assertEquals("Unexpected response status code", code, response.statusCode());
     }
@@ -166,6 +175,7 @@ public class HttpClient {
      * get all triangles
      * @return String
      */
+    @Step("get all triangles")
     public String getAllTriangles() {
         return RestAssured.given()
                 .contentType(ContentType.JSON)
@@ -182,6 +192,7 @@ public class HttpClient {
      * @param token API token
      * @return String
      */
+    @Step("send POST with token")
     public String sendPostWithToken(Map<String, String> params, Paths path, String endpoint, String token) {
         this.response = null;
         this.response = RestAssured.given()
@@ -199,6 +210,7 @@ public class HttpClient {
      * @param token API token
      * @return String
      */
+    @Step("send GET with token")
     public String sendGetWithToken(String endpoint, String token) {
         this.response = null;
         this.response = RestAssured.given()
@@ -215,6 +227,7 @@ public class HttpClient {
      * @param token API token
      * @return String
      */
+    @Step("send DELETE with token")
     public String sendDeleteWithToken(String endpoint, String token) {
         this.response = null;
         this.response = RestAssured.given()

@@ -3,6 +3,7 @@ package tests;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import commons.HttpClient;
+import io.qameta.allure.Issue;
 import io.restassured.path.json.JsonPath;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -218,6 +219,7 @@ public class PositiveCases {
         assertEquals("Unexpected thirdSide", String.valueOf((Double.MAX_VALUE + 1)), JsonPath.from(res).get("thirdSide").toString());
     }
 
+    @Issue("ISSUE")
     @Test(description = "BUG - create triangle with math operator separator")
     public void createTriangleWithMathOperatorSeparator() {
         Map<String, String> map = new HashMap<>();
@@ -234,6 +236,7 @@ public class PositiveCases {
         assertEquals("Unexpected thirdSide", "4.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
+    @Issue("ISSUE")
     @Test(description = "BUG - create triangle with another separator")
     public void createTriangleWithAnotherSeparator() {
         Map<String, String> map = new HashMap<>();
@@ -250,6 +253,7 @@ public class PositiveCases {
         assertEquals("Unexpected thirdSide", "4.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
+    @Issue("ISSUE")
     @Test(description = "BUG - create triangle with special character separator")
     public void createTriangleWithSpecialCharacterSeparator() {
         Map<String, String> map = new HashMap<>();

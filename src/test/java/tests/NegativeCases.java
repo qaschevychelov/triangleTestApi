@@ -25,7 +25,7 @@ public class NegativeCases {
         httpClient.clean();
     }
 
-    @Issue("link")
+    @Issue("ISSUE")
     @Test(description = "ISSUE - save more than 10 triangles")
     public void createMoreThanTen() {
         Map<String, String> map = new HashMap<>();
@@ -516,6 +516,7 @@ public class NegativeCases {
         assertEquals("Unexpected thirdSide", "3.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
+    @Issue("ISSUE")
     @Test(description = "BUG - create triangle without input")
     public void createTriangleWithoutInput() {
         Map<String, String> map = new HashMap<>();
@@ -532,6 +533,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle", JsonPath.from(res).get("path"));
     }
 
+    @Issue("ISSUE")
     @Test(description = "BUG - create triangle with null input")
     public void createTriangleWithNullInput() {
         Map<String, String> map = new HashMap<>();
