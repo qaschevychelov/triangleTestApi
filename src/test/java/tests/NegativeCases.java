@@ -368,15 +368,6 @@ public class NegativeCases {
         assertEquals("Unexpected response body", "", res);
     }
 
-    @Test(description = "get all triangles when 0", enabled = true)
-    public void getAllTrianglesWhenZero() {
-        String res = httpClient.sendGet("/triangle/all");
-
-        // assertions
-        httpClient.assertStatusCode(200);
-        assertEquals("Unexpected response body", "[]", res);
-    }
-
     @Test(description = "get perimeter of nonexistent triangle", enabled = true)
     public void getPerimeterOfNonExistentTriangle() {
         String id = UUID.randomUUID().toString();
@@ -521,22 +512,6 @@ public class NegativeCases {
         assertEquals("Unexpected firstSide", "1.0", JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", "2.0", JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", "3.0", JsonPath.from(res).get("thirdSide").toString());
-    }
-
-    @Test(description = "create triangle with zero length sides", enabled = true)
-    public void createTriangleWithZeroLengthSides() {
-        Map<String, String> map = new HashMap<>();
-        map.put("separator", ";");
-        map.put("input", "0;0;0");
-
-        String res = httpClient.sendPost(map, Paths.SIMPLE, "/triangle");
-
-        // assertions
-        httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
-        assertEquals("Unexpected firstSide", "0.0", JsonPath.from(res).get("firstSide").toString());
-        assertEquals("Unexpected secondSide", "0.0", JsonPath.from(res).get("secondSide").toString());
-        assertEquals("Unexpected thirdSide", "0.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
     @Test(description = "BUG - create triangle without input", enabled = true)
