@@ -22,7 +22,7 @@ public class PositiveCases {
         httpClient.clean();
     }
 
-    @Test(description = "get existing triangle", enabled = true)
+    @Test(description = "get existing triangle")
     public void getExistingTriangle() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -41,7 +41,7 @@ public class PositiveCases {
         assertEquals("Unexpected thirdSide", "4.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "delete existing triangle", enabled = true)
+    @Test(description = "delete existing triangle")
     public void deleteExistingTriangle() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -57,7 +57,7 @@ public class PositiveCases {
         assertEquals("Unexpected response body", "", res);
     }
 
-    @Test(description = "get all triangles when 0", enabled = true)
+    @Test(description = "get all triangles when 0")
     public void getAllTrianglesWhenZero() {
         String res = httpClient.sendGet("/triangle/all");
 
@@ -66,7 +66,7 @@ public class PositiveCases {
         assertEquals("Unexpected response body", "[]", res);
     }
 
-    @Test(description = "create triangle with zero length sides", enabled = true)
+    @Test(description = "create triangle with zero length sides")
     public void createTriangleWithZeroLengthSides() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -76,13 +76,13 @@ public class PositiveCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", "0.0", JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", "0.0", JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", "0.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "get all triangles when 10", enabled = true)
+    @Test(description = "get all triangles when 10")
     public void getAllTrianglesWhenTen() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -102,7 +102,7 @@ public class PositiveCases {
                     "Unexpected triangle ID",
                     jsonArray.get(i).getAsJsonObject().get("id").getAsString() != null
                             &&
-                        jsonArray.get(i).getAsJsonObject().get("id").getAsString().length() == 36
+                        jsonArray.get(i).getAsJsonObject().get("id").getAsString().length() > 30
             );
             assertEquals(
                     "Unexpected firstSide for triangle with UUID " + jsonArray.get(i).getAsJsonObject().get("id"),
@@ -122,7 +122,7 @@ public class PositiveCases {
         }
     }
 
-    @Test(description = "get perimeter of existing triangle", enabled = true)
+    @Test(description = "get perimeter of existing triangle")
     public void getPerimeterOfExistingTriangle() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -138,7 +138,7 @@ public class PositiveCases {
         assertEquals("Unexpected triangle ID", "9.0", JsonPath.from(res).get("result").toString());
     }
 
-    @Test(description = "get area of existing triangle", enabled = true)
+    @Test(description = "get area of existing triangle")
     public void getAreaOfExistingTriangle() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -154,7 +154,7 @@ public class PositiveCases {
         assertEquals("Unexpected triangle ID", "2.9047375", JsonPath.from(res).get("result").toString());
     }
 
-    @Test(description = "create simple triangle", enabled = true)
+    @Test(description = "create simple triangle")
     public void createSimpleTriangle() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -164,13 +164,13 @@ public class PositiveCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", "2.0", JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", "3.0", JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", "4.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "create simple triangle with float", enabled = true)
+    @Test(description = "create simple triangle with float")
     public void createSimpleTriangleWithFloat() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -180,13 +180,13 @@ public class PositiveCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", "2.5", JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", "3.6", JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", "4.1", JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "create simple triangle with max double", enabled = true)
+    @Test(description = "create simple triangle with max double")
     public void createSimpleTriangleWithMaxDouble() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -196,13 +196,13 @@ public class PositiveCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", String.valueOf(Double.MAX_VALUE), JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", String.valueOf(Double.MAX_VALUE), JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", String.valueOf(Double.MAX_VALUE), JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "create simple triangle with max double + 1", enabled = true)
+    @Test(description = "create simple triangle with max double + 1")
     public void createSimpleTriangleWithMaxDoublePlusOne() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -212,13 +212,13 @@ public class PositiveCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", String.valueOf((Double.MAX_VALUE + 1)), JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", String.valueOf((Double.MAX_VALUE + 1)), JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", String.valueOf((Double.MAX_VALUE + 1)), JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "BUG - create triangle with math operator separator", enabled = true)
+    @Test(description = "BUG - create triangle with math operator separator")
     public void createTriangleWithMathOperatorSeparator() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", "*");
@@ -228,13 +228,13 @@ public class PositiveCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", "2.0", JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", "3.0", JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", "4.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "BUG - create triangle with another separator", enabled = true)
+    @Test(description = "BUG - create triangle with another separator")
     public void createTriangleWithAnotherSeparator() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", "|");
@@ -244,13 +244,13 @@ public class PositiveCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", "2.0", JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", "3.0", JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", "4.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "BUG - create triangle with special character separator", enabled = true)
+    @Test(description = "BUG - create triangle with special character separator")
     public void createTriangleWithSpecialCharacterSeparator() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", "?");
@@ -260,13 +260,13 @@ public class PositiveCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", "2.0", JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", "3.0", JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", "4.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "create triangle with logic operator separator", enabled = true)
+    @Test(description = "create triangle with logic operator separator")
     public void createTriangleWithLogicOperatorSeparator() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", "&&");
@@ -276,13 +276,13 @@ public class PositiveCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", "2.0", JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", "3.0", JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", "4.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "create triangle with default separator", enabled = true)
+    @Test(description = "create triangle with default separator")
     public void createTriangleWithDefaultSeparator() {
         Map<String, String> map = new HashMap<>();
         map.put("input", "2;3;4");
@@ -291,13 +291,13 @@ public class PositiveCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", "2.0", JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", "3.0", JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", "4.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "create isosceles triangle", enabled = true)
+    @Test(description = "create isosceles triangle")
     public void createIsoscelesTriangle() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -307,13 +307,13 @@ public class PositiveCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", "2.0", JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", "3.0", JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", "3.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "create equilateral triangle", enabled = true)
+    @Test(description = "create equilateral triangle")
     public void createEquilateralTriangle() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -323,13 +323,13 @@ public class PositiveCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", "3.0", JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", "3.0", JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", "3.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "get perimeter of max double", enabled = true)
+    @Test(description = "get perimeter of max double")
     public void getPerimeterOfMaxDouble() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -346,7 +346,7 @@ public class PositiveCases {
         assertEquals("Unexpected perimeter", side, JsonPath.from(res).get("result").toString());
     }
 
-    @Test(description = "QUESTION TO ANALYST - get area of max double", enabled = true)
+    @Test(description = "QUESTION TO ANALYST - get area of max double")
     public void getAreaOfMaxDouble() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -361,5 +361,29 @@ public class PositiveCases {
         // assertions
         httpClient.assertStatusCode(200);
         assertEquals("Unexpected perimeter", side, JsonPath.from(res).get("result").toString());
+    }
+
+    @Test(description = "create the same triangle")
+    public void createTheSameTriangle() {
+        Map<String, String> map = new HashMap<>();
+        map.put("separator", ";");
+        map.put("input", "3;4;5");
+
+        httpClient.sendPost(map, Paths.SIMPLE, "/triangle");
+        httpClient.sendPost(map, Paths.SIMPLE, "/triangle");
+
+        String res = httpClient.sendGet("/triangle/all");
+        JsonArray jsonArray = new JsonParser().parse(res).getAsJsonArray();
+
+        // assertions
+        httpClient.assertStatusCode(200);
+        assertEquals("Unexpected triangle count", 2, jsonArray.size());
+
+        for (int i = 0; i < jsonArray.size(); i++) {
+            assertTrue("Unexpected triangle ID", jsonArray.get(i).getAsJsonObject().get("id") != null && jsonArray.get(i).getAsJsonObject().get("id").toString().length() > 30);
+            assertEquals("Unexpected firstSide", "3.0", jsonArray.get(i).getAsJsonObject().get("firstSide").toString());
+            assertEquals("Unexpected secondSide", "4.0", jsonArray.get(i).getAsJsonObject().get("secondSide").toString());
+            assertEquals("Unexpected thirdSide", "5.0", jsonArray.get(i).getAsJsonObject().get("thirdSide").toString());
+        }
     }
 }

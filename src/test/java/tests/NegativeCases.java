@@ -3,6 +3,7 @@ package tests;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import commons.HttpClient;
+import io.qameta.allure.Issue;
 import io.restassured.path.json.JsonPath;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -24,7 +25,8 @@ public class NegativeCases {
         httpClient.clean();
     }
 
-    @Test(description = "BUG - save more than 10 triangles", enabled = true)
+    @Issue("link")
+    @Test(description = "ISSUE - save more than 10 triangles")
     public void createMoreThanTen() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -46,7 +48,7 @@ public class NegativeCases {
         assertEquals("Unexpected number of triangles", 10, jsonArray.size());
     }
 
-    @Test(description = "create without token", enabled = true)
+    @Test(description = "create without token")
     public void createWithoutToken() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -62,7 +64,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get without token", enabled = true)
+    @Test(description = "get without token")
     public void getWithoutToken() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -81,7 +83,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id, JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "delete without token", enabled = true)
+    @Test(description = "delete without token")
     public void deleteWithoutToken() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -100,7 +102,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id, JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get all without token", enabled = true)
+    @Test(description = "get all without token")
     public void getAllWithoutToken() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -118,7 +120,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/all", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get perimeter without token", enabled = true)
+    @Test(description = "get perimeter without token")
     public void getPerimeterWithoutToken() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -137,7 +139,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id + "/perimeter", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get area without token", enabled = true)
+    @Test(description = "get area without token")
     public void getAreaWithoutToken() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -156,7 +158,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id + "/area", JsonPath.from(res).get("path"));
     }
     
-    @Test(description = "create with invalid token", enabled = true)
+    @Test(description = "create with invalid token")
     public void createWithInvalidToken() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -172,7 +174,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get with invalid token", enabled = true)
+    @Test(description = "get with invalid token")
     public void getWithInvalidToken() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -191,7 +193,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id, JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "delete with invalid token", enabled = true)
+    @Test(description = "delete with invalid token")
     public void deleteWithInvalidToken() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -210,7 +212,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id, JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get all with invalid token", enabled = true)
+    @Test(description = "get all with invalid token")
     public void getAllWithInvalidToken() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -228,7 +230,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/all", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get perimeter with invalid token", enabled = true)
+    @Test(description = "get perimeter with invalid token")
     public void getPerimeterWithInvalidToken() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -247,7 +249,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id + "/perimeter", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get area with invalid token", enabled = true)
+    @Test(description = "get area with invalid token")
     public void getAreaWithInvalidToken() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -266,7 +268,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id + "/area", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "POST with invalid endpoint", enabled = true)
+    @Test(description = "POST with invalid endpoint")
     public void postWithInvalidEndPoint() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -282,7 +284,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/test", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get with invalid endpoint", enabled = true)
+    @Test(description = "get with invalid endpoint")
     public void getWithInvalidEndPoint() {
         String res = httpClient.sendGet("/test");
 
@@ -294,7 +296,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/test", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "delete with invalid endpoint", enabled = true)
+    @Test(description = "delete with invalid endpoint")
     public void deleteWithInvalidEndPoint() {
         String res = httpClient.sendDelete("/test");
 
@@ -306,7 +308,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/test", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get nonexistent triangle", enabled = true)
+    @Test(description = "get nonexistent triangle")
     public void getNonExistentTriangle() {
         String id = UUID.randomUUID().toString();
         String res = httpClient.sendGet("/triangle/" + id);
@@ -319,7 +321,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id, JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get deleted triangle", enabled = true)
+    @Test(description = "get deleted triangle")
     public void getDeletedTriangle() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -340,7 +342,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id, JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "QUESTION TO ANALYST - delete nonexistent triangle", enabled = true)
+    @Test(description = "QUESTION TO ANALYST - delete nonexistent triangle")
     public void deleteNonExistentTriangle() {
         String id = UUID.randomUUID().toString();
         String res = httpClient.sendDelete("/triangle/" + id);
@@ -350,7 +352,7 @@ public class NegativeCases {
         assertEquals("Unexpected response body", "", res);
     }
 
-    @Test(description = "QUESTION TO ANALYST - delete deleted triangle", enabled = true)
+    @Test(description = "QUESTION TO ANALYST - delete deleted triangle")
     public void deleteDeletedTriangle() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -368,7 +370,7 @@ public class NegativeCases {
         assertEquals("Unexpected response body", "", res);
     }
 
-    @Test(description = "get perimeter of nonexistent triangle", enabled = true)
+    @Test(description = "get perimeter of nonexistent triangle")
     public void getPerimeterOfNonExistentTriangle() {
         String id = UUID.randomUUID().toString();
         String res = httpClient.sendGet("/triangle/" + id + "/perimeter");
@@ -381,7 +383,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id + "/perimeter", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get perimeter of deleted triangle", enabled = true)
+    @Test(description = "get perimeter of deleted triangle")
     public void getPerimeterOfDeletedTriangle() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -401,7 +403,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id + "/perimeter", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get area of nonexistent triangle", enabled = true)
+    @Test(description = "get area of nonexistent triangle")
     public void getAreaOfNonExistentTriangle() {
         String id = UUID.randomUUID().toString();
         String res = httpClient.sendGet("/triangle/" + id + "/area");
@@ -414,7 +416,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id + "/area", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get area of deleted triangle", enabled = true)
+    @Test(description = "get area of deleted triangle")
     public void getAreaOfDeletedTriangle() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -434,7 +436,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle/" + id + "/area", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "create impossible triangle", enabled = true)
+    @Test(description = "create impossible triangle")
     public void createImpossibleTriangle() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -450,7 +452,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "create two lines", enabled = true)
+    @Test(description = "create two lines")
     public void createTwoLines() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -466,7 +468,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "QUESTION TO ANALYST - create quadrangle", enabled = true)
+    @Test(description = "QUESTION TO ANALYST - create quadrangle")
     public void createQuadrangle() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -476,13 +478,13 @@ public class NegativeCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", "2.0", JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", "3.0", JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", "4.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "create triangle without sides", enabled = true)
+    @Test(description = "create triangle without sides")
     public void createTriangleWithoutSides() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -498,7 +500,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "create triangle with negative sides", enabled = true)
+    @Test(description = "create triangle with negative sides")
     public void createTriangleWithNegativeSides() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -508,13 +510,13 @@ public class NegativeCases {
 
         // assertions
         httpClient.assertStatusCode(200);
-        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() == 36);
+        assertTrue("Unexpected triangle ID", JsonPath.from(res).get("id") != null && JsonPath.from(res).get("id").toString().length() > 30);
         assertEquals("Unexpected firstSide", "1.0", JsonPath.from(res).get("firstSide").toString());
         assertEquals("Unexpected secondSide", "2.0", JsonPath.from(res).get("secondSide").toString());
         assertEquals("Unexpected thirdSide", "3.0", JsonPath.from(res).get("thirdSide").toString());
     }
 
-    @Test(description = "BUG - create triangle without input", enabled = true)
+    @Test(description = "BUG - create triangle without input")
     public void createTriangleWithoutInput() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -530,7 +532,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "BUG - create triangle with null input", enabled = true)
+    @Test(description = "BUG - create triangle with null input")
     public void createTriangleWithNullInput() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -546,7 +548,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "create triangle with empty input", enabled = true)
+    @Test(description = "create triangle with empty input")
     public void createTriangleWithEmptyInput() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -562,7 +564,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "create triangle with wrong separator", enabled = true)
+    @Test(description = "create triangle with wrong separator")
     public void createTriangleWithWrongSeparator() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -578,7 +580,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "create triangle with non default separator", enabled = true)
+    @Test(description = "create triangle with non default separator")
     public void createTriangleWithNonDefaultSeparator() {
         Map<String, String> map = new HashMap<>();
         map.put("input", "3/4/5");
