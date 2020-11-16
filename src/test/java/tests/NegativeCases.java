@@ -282,7 +282,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/test", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "get with invalid token", enabled = true)
+    @Test(description = "get with invalid endpoint", enabled = true)
     public void getWithInvalidEndPoint() {
         String res = httpClient.sendGet("/test");
 
@@ -294,7 +294,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/test", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "delete with invalid token", enabled = true)
+    @Test(description = "delete with invalid endpoint", enabled = true)
     public void deleteWithInvalidEndPoint() {
         String res = httpClient.sendDelete("/test");
 
@@ -459,7 +459,7 @@ public class NegativeCases {
         assertEquals("Unexpected path", "/triangle", JsonPath.from(res).get("path"));
     }
 
-    @Test(description = "create two lines triangle", enabled = true)
+    @Test(description = "create two lines", enabled = true)
     public void createTwoLines() {
         Map<String, String> map = new HashMap<>();
         map.put("separator", ";");
@@ -578,6 +578,37 @@ public class NegativeCases {
         map.put("input", "");
 
         String res = httpClient.sendPost(map, Paths.SIMPLE, "/triangle");
+
+        // assertions
+        httpClient.assertStatusCode(422);
+        assertEquals("Unexpected status", "422", JsonPath.from(res).get("status").toString());
+        assertEquals("Unexpected error", "Unprocessable Entity", JsonPath.from(res).get("error"));
+        assertEquals("Unexpected message", "Cannot process input", JsonPath.from(res).get("message"));
+        assertEquals("Unexpected path", "/triangle", JsonPath.from(res).get("path"));
+    }
+
+    @Test(description = "create triangle with wrong separator", enabled = true)
+    public void createTriangleWithWrongSeparator() {
+        Map<String, String> map = new HashMap<>();
+        map.put("separator", ";");
+        map.put("input", "3/4/5");
+
+        String res = httpClient.sendPost(map, Paths.SIMPLE, "/triangle");
+
+        // assertions
+        httpClient.assertStatusCode(422);
+        assertEquals("Unexpected status", "422", JsonPath.from(res).get("status").toString());
+        assertEquals("Unexpected error", "Unprocessable Entity", JsonPath.from(res).get("error"));
+        assertEquals("Unexpected message", "Cannot process input", JsonPath.from(res).get("message"));
+        assertEquals("Unexpected path", "/triangle", JsonPath.from(res).get("path"));
+    }
+
+    @Test(description = "create triangle with non default separator", enabled = true)
+    public void createTriangleWithNonDefaultSeparator() {
+        Map<String, String> map = new HashMap<>();
+        map.put("input", "3/4/5");
+
+        String res = httpClient.sendPost(map, Paths.WITHOUT_SEPARATOR, "/triangle");
 
         // assertions
         httpClient.assertStatusCode(422);
