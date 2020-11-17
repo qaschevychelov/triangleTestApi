@@ -1,5 +1,25 @@
 # Triangle Service: API test
 
+# Questions to Analysts
+    1. delete nonexistent triangle - response is 200 OK with no body. 
+       Is it OK?
+    2. delete deleted triangle - response is 200 OK with no body. 
+       Is it OK?
+    3. create quadrangle - API takes first three side and creates a triangle. Fourth side is skipped. 
+       Is it OK? Is an error expected?
+    4. get area of max double - API returns 'infinite'. 
+       Is it OK? Is an error expected?
+    5. Is it OK if i get 405 'Method Not Allowed' when changing type of request? 
+       For instance, when i send GET request '/triangle' with request body instead of POST.
+       405 code isn't described in the specification. 
+       
+## Bugs
+    1. 11 triangles can be saved. Expected 10
+    2. got 500 internal error when trying to send '/triangle' POST request without 'input' field or with 'input' equals null
+    3. got 500 internal error when trying to send '/triangle' POST request with separator as math operator (*)
+    4. got 500 internal error when trying to send '/triangle' POST request with separator as |
+    5. got 500 internal error when trying to send '/triangle' POST request with separator as special character (?)
+
 ## Negative cases
     1. BUG - save more than 10 triangles - allows to save 11 triangles
     2. create without token
