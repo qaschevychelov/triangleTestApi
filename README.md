@@ -19,6 +19,7 @@
     3. got 500 internal error when trying to send '/triangle' POST request with separator as math operator (*)
     4. got 500 internal error when trying to send '/triangle' POST request with separator as |
     5. got 500 internal error when trying to send '/triangle' POST request with separator as special character (?)
+    6. got result 'NaN' when requesting area of a triangle with too huge sides
 
 ## Negative cases
     1. BUG - save more than 10 triangles - allows to save 11 triangles
@@ -55,6 +56,7 @@
     32. create triangle with empty input
     33. create triangle with wrong separator
     34. create triangle with non default separator
+    35. BUG - create triangle with too huge sides, then get area of this perimeter
 
 ## Positive cases
     1. get existing triangle
