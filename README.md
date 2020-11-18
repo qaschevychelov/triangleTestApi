@@ -56,7 +56,8 @@
     32. create triangle with empty input
     33. create triangle with wrong separator
     34. create triangle with non default separator
-    35. BUG - create triangle with too huge sides, then get area of this perimeter
+    35. BUG - create triangle with too huge sides, then get area of this triangle
+    36. create triangle with too huge sides, then get perimeter of this triangle
 
 ## Positive cases
     1. get existing triangle
